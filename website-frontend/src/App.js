@@ -2,8 +2,37 @@ import ctaImage from '../src/images/backgroundImage.png'
 import placeholder from '../src/images/placeholder.png'
 import placeholder2 from '../src/images/placeholder2.png'
 import './App.css';
+import React, { useEffect, useState } from 'react';
 
 function App() {
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = window.scrollY; // Using window.scrollY
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const yellowElement = document.querySelector('.yellow-circle');
+    const redElement = document.querySelector('.red-circle');
+    
+    if (yellowElement) {
+      yellowElement.style.setProperty('--scroll-position', `${scrollPosition}px`);
+    }
+
+    if (redElement) {
+      redElement.style.setProperty('--scroll-position', `${scrollPosition}px`);
+    }
+  }, [scrollPosition]);
+
   return (
     <div className="App">
       <header>
@@ -24,7 +53,7 @@ function App() {
       </header>
       <main>
         <section>
-          <div className="container section--container">
+          <div className="container section--container yellow-circle">
             <div className="section-text--main">
               <h1>Empower your learning with AI.</h1>
               <h2>Create your own learning path, track what you learn, and review what you've learnt.</h2>
@@ -35,7 +64,7 @@ function App() {
           </div>
         </section>
         <section>
-          <div className="container section--container">
+          <div className="container section--container red-circle">
             <div className="section-image">
               <img className="image-2" src={placeholder2} alt="Empower your learning with AI"/>
             </div>

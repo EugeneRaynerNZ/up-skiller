@@ -112,6 +112,23 @@ nav ul li {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  position: relative;
+  cursor: pointer;
+}
+
+nav ul li:after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: black;
+  transition: all 0.4s;
+}
+
+nav ul li:hover:after {
+  width: 100%
 }
 
 .logo--container {
@@ -185,11 +202,12 @@ section .image-2 {
   max-width: 400px;
 }
 
-main section:nth-child(1):before {
+.yellow-circle:before {
   content: '';
   position: absolute;
   right: -42px;
-  bottom: -29px;
+  /* bottom: -29px; */
+  bottom: calc(-29px + var(--scroll-position, 0) / 5); 
   width: 552px;
   height: 552px;
   border-radius: 552px;
@@ -197,11 +215,12 @@ main section:nth-child(1):before {
   z-index: -1;
 }
 
-main section:nth-child(2):before {
+.red-circle:before {
   content: '';
   position: absolute;
   left: -331px;
-  bottom: -166px;
+  bottom: calc(-166px + var(--scroll-position, 0) / 8);
+  /* bottom: -166px; */
   width: 552px;
   height: 552px;
   border-radius: 552px;
@@ -343,4 +362,15 @@ footer {
   display: flex;
   gap: 40px;
   flex: 1;
+}
+
+.footer--container-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer--container-links ul li {
+  font-size: 13px;
+  font-weight: 600;
 }
