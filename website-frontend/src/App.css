@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+:root {
+  --header-height: 90px;
+  --button-primary: #DBC5FF;
+  --button-secondary: #ffffff;
+  --button-primary-hover: #C5A2FD;
+  --button-secondary-hover: #f5f5f5;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+.container {
+  max-width: 1224px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  background: white;
+  z-index: 10;
+  height: var(--header-height)
+}
+
+.header--container {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  height: var(--header-height);
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+nav ul li {
+  color: #000;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.logo--container {
+  display: flex;
+  align-items: center;
+}
+
+.button--container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cta--button {
+  display: flex;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+  color: #000;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.cta--button-primary {
+  background: var(--button-primary);
+}
+
+.cta--button-primary:hover {
+  background: var(--button-primary-hover)
+}
+
+.cta--button-secondary {
+  background: var(--button-secondary);
+  border: 1px solid var(--button-primary);
+}
+
+.cta--button-secondary:hover {
+  background: var(--button-secondary-hover)
+}
+
+main {
+  padding-top: var(--header-height);
+  overflow: hidden;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  height: 587px;
+  /* padding: 54px 0px; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  position: relative;
+}
+
+section .image-1 {
+  max-width: 585px;
+}
+
+section .image-2 {
+  max-width: 400px;
+}
+
+main section:nth-child(1):before {
+  content: '';
+  position: absolute;
+  right: -42px;
+  bottom: -29px;
+  width: 552px;
+  height: 552px;
+  border-radius: 552px;
+  background: rgba(186, 145, 0, 0.10);
+  z-index: -1;
+}
+
+main section:nth-child(2):before {
+  content: '';
+  position: absolute;
+  left: -331px;
+  bottom: -166px;
+  width: 552px;
+  height: 552px;
+  border-radius: 552px;
+  background: rgba(186, 0, 0, 0.10);
+  z-index: -1;
+}
+
+.section--container {
+  display: flex;
+  flex-direction: row;
+  gap: 54px;
+}
+
+.section-text--main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.section-text--main h1 {
+  color: #000;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.section-text--main h2 {
+  color: #000;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.section-image {
+  width: 100%;
+  /* remove this */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #fafafa;
+  border-radius: 8px; */
+}
+
+.section-text--secondary {
+  display: flex;
+  height: 433px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.section-text--secondary h1 {
+  color: #000;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.section-text--secondary h2 {
+  color: #000;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.section--3 {
+  display: flex;
+  height: 534px;
+  padding: 54px 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  background: #BCCFFF;
+}
+
+.cta--container {
+  display: flex;
+  height: 346px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  align-self: stretch;
+}
+
+.cta--container-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta--container-text h3 {
+  color: #F8F8F8;
+  text-align: center;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.cta--container-text p {
+  color: #F8F8F8;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+footer {
+  display: flex;
+  height: 131px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  background: #FAFAFA;
+}
+
+.footer--container {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  flex-shrink: 0;
+}
+
+.footer--container-links {
+  display: flex;
+  gap: 40px;
+  flex: 1;
+}
