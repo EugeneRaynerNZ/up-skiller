@@ -47,7 +47,7 @@ function App() {
           </nav>
           <div className="button--container">
             <button className="cta--button cta--button-secondary">Sign in</button>
-            <button className="cta--button cta--button-primary">Sign up</button>
+            <button className="cta--button cta--button-primary">Get Started</button>
           </div>
         </div>
       </header>
@@ -70,7 +70,7 @@ function App() {
             </div>
             <div className="section-text--secondary">
               <h1>We believe learning should be simple and its impact should be big.</h1>
-              <h2>Let's make that a reality for your business. Here's how.</h2>
+              <h2>Let's make that a reality. Here's how.</h2>
             </div>
           </div>
         </section>
@@ -78,7 +78,7 @@ function App() {
           <div className="container section--container">
             <div className="section-text--secondary">
               <h1>Reimagine learning with the power of AI</h1>
-              <h2>Eliminate repetitive, manual tasks and focus on building automated, dynamic, and personalized learning programs that have real impact with ________ AI-Powered learning solution.</h2>
+              <h2>Eliminate repetitive, manual tasks and focus on building automated and dynamic learning programs that have real impact with our AI-Powered learning solution.</h2>
             </div>
             <div className="section-image">
               <img className="image-1" src={placeholder} alt="Empower your learning with AI"/>
@@ -89,9 +89,9 @@ function App() {
           <div className="cta--container" style={{backgroundImage: `url(${ctaImage})`}}>
             <div className="cta--container-text">
               <h3>Start learning today</h3>
-              <p>Sign up today and begin your AI–powered learning journey.</p>
+              <p>Sign up today and begin your AI-powered learning journey.</p>
             </div>
-            <button className="cta--button cta--button-primary">Sign up</button>
+            <button className="cta--button cta--button-primary">Get Started</button>
           </div>
         </section>
       </main>
