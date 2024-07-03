@@ -1,0 +1,12 @@
+{
+  "mongodb": {
+    "url": "BACKEND_DB_LINK",
+    "dbName": "upskiller",
+    "authSource": "BACKEND_AUTH_SOURCE",
+    "username": "BACKEND_DB_USER",
+    "password": "BACKEND_DB_PASSWORD"
+  },
+  "authentication": {
+    "secret": "FEATHERS_SECRET"
+  }
+}

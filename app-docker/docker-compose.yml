@@ -1,0 +1,19 @@
+version: "3.0"
+services:
+  database:
+    hostname: database
+    restart: always
+    image: mongo:7
+    volumes:
+      - ${BACKEND_DB_LOCAL_PATH}:/data/db
+      - ${BACKEND_DB_LOCAL_PATH}/dump:/mnt/dump
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${BACKEND_DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${BACKEND_DB_PASSWORD}
+    ports:
+      - "27017:27017"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

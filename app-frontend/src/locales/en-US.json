@@ -1,0 +1,12 @@
+{
+  "default_title": "Welcome",
+  "app_name": "Upskiller",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "login": {
+    "title": "Sign in"
+  },
+  "verify": {
+    "title": "Sign in"
+  }
+}

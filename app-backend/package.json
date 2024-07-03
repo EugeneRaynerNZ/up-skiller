@@ -1,0 +1,76 @@
+{
+  "name": "app-backend",
+  "description": "Upskiller's backend",
+  "version": "0.0.0",
+  "homepage": "",
+  "private": true,
+  "keywords": [
+    "feathers"
+  ],
+  "author": {},
+  "contributors": [],
+  "bugs": {},
+  "engines": {
+    "node": ">= 20.5.0"
+  },
+  "feathers": {
+    "language": "ts",
+    "packager": "npm",
+    "database": "mongodb",
+    "framework": "express",
+    "transports": [
+      "rest",
+      "websockets"
+    ],
+    "schema": false
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "main": "lib/index",
+  "scripts": {
+    "dev": "dotenv -e ../app-docker/.env -- nodemon -x ts-node src/index.ts",
+    "compile": "dotenv -e ../app-docker/.env -- shx rm -rf lib/ && tsc",
+    "start": "dotenv -e ../app-docker/.env -- node lib/",
+    "prettier": "npx prettier \"**/*.ts\" --write",
+    "mocha": "cross-env NODE_ENV=test mocha test/ --require ts-node/register --recursive --extension .ts --exit",
+    "test": "npm run mocha",
+    "bundle:client": "npm run compile && npm pack --pack-destination ./public"
+  },
+  "dependencies": {
+    "@feathersjs/adapter-commons": "^5.0.27",
+    "@feathersjs/authentication": "^5.0.27",
+    "@feathersjs/authentication-client": "^5.0.27",
+    "@feathersjs/authentication-local": "^5.0.27",
+    "@feathersjs/authentication-oauth": "^5.0.27",
+    "@feathersjs/configuration": "^5.0.27",
+    "@feathersjs/errors": "^5.0.27",
+    "@feathersjs/express": "^5.0.27",
+    "@feathersjs/feathers": "^5.0.27",
+    "@feathersjs/mongodb": "^5.0.27",
+    "@feathersjs/schema": "^5.0.27",
+    "@feathersjs/socketio": "^5.0.27",
+    "@feathersjs/transport-commons": "^5.0.27",
+    "compression": "^1.7.4",
+    "feathers-authentication-management": "^5.0.1",
+    "feathers-mailer": "^4.1.1",
+    "mongodb": "^6.8.0",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@feathersjs/cli": "^5.0.27",
+    "@feathersjs/rest-client": "^5.0.27",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.14.9",
+    "axios": "^1.7.2",
+    "cross-env": "^7.0.3",
+    "dotenv-cli": "^7.4.2",
+    "mocha": "^10.6.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.2",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
