@@ -7,6 +7,9 @@
 node_modules/
 dist/
 
+# lib files
+lib/
+
 # Index from vue project
 frontend/public/index.html
 
