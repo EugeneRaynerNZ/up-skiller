@@ -21,6 +21,7 @@ export enum SkillStatus {
     ACTIVE = 'active',
     INACTIVE = 'inactive',
     PENDING = 'pending',
+    COMPLETED = 'completed',
 }
 
 /**

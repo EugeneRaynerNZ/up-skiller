@@ -14,7 +14,7 @@ export const skillsSchema = Type.Object(
     _id: ObjectIdSchema(),  // skill id
     userId: ObjectIdSchema(), // user id
     name: Type.String(),  // skill name
-    description: Type.String(), // skill description
+    description: Type.Optional(Type.String()), // skill description
     tags: Type.Optional(Type.Array(Type.String())),  // skill tags
     status: UserStatusEnum, // skill status
     subjects: Type.Optional(Type.Array(ObjectIdSchema())), // subject ids under this skill
@@ -29,13 +29,16 @@ export const skillsExternalResolver = resolve<Skills, HookContext<SkillsService>
 
 // Schema for creating new entries
 export const skillsDataSchema = Type.Pick(skillsSchema, 
-  ['userId', 'name', 'description', 'status'],
+  ['userId', 'name', 'status'],
 {
   $id: 'SkillsData'
 })
 export type SkillsData = Static<typeof skillsDataSchema>
 export const skillsDataValidator = getValidator(skillsDataSchema, dataValidator)
-export const skillsDataResolver = resolve<Skills, HookContext<SkillsService>>({})
+export const skillsDataResolver = resolve<Skills, HookContext<SkillsService>>({
+    // give status a default value
+    status: () => UserStatusEnum.PENDING,
+})
 
 // Schema for updating existing entries
 export const skillsPatchSchema = Type.Partial(skillsSchema, {
