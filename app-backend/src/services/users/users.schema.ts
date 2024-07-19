@@ -1,11 +1,15 @@
-import { Type, getValidator, querySyntax } from '@feathersjs/typebox'
-import { ObjectIdSchema } from '@feathersjs/typebox'
-import { dataValidator, queryValidator } from '../../validators'
+import {
+  Type,
+  getValidator,
+  querySyntax,
+  ObjectIdSchema,
+} from '@feathersjs/typebox'
 import { resolve } from '@feathersjs/schema'
 import { passwordHash } from '@feathersjs/authentication-local'
+import { dataValidator, queryValidator } from '../../validators'
+
 import type { HookContext } from '../../declarations'
 import type { UserService } from './users.class'
-
 import type { Static } from '@feathersjs/typebox'
 
 // Main data model schema

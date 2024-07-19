@@ -28,20 +28,16 @@ export const user = (app: Application) => {
   app.service(userPath).hooks({
     around: {
       all: [],
+      create: [],
+    },
+    before: {
+      all: [],
       find: [authenticate('jwt')],
       get: [authenticate('jwt')],
       create: [],
       update: [authenticate('jwt')],
       patch: [authenticate('jwt')],
       remove: [authenticate('jwt')],
-    },
-    before: {
-      all: [],
-      find: [],
-      get: [],
-      create: [],
-      patch: [],
-      remove: [],
     },
     after: {
       all: [],
