@@ -2,7 +2,7 @@
 import { resolve } from '@feathersjs/schema'
 import { Type, getValidator, querySyntax, ObjectIdSchema } from '@feathersjs/typebox'
 import { dataValidator, queryValidator } from '../../validators'
-import { UserStatusType } from '../enum'
+import { UserStatusEnum } from '../enum'
 
 import type { Static } from '@feathersjs/typebox'
 import type { HookContext } from '../../declarations'
@@ -16,7 +16,7 @@ export const skillsSchema = Type.Object(
     name: Type.String(),  // skill name
     description: Type.String(), // skill description
     tags: Type.Optional(Type.Array(Type.String())),  // skill tags
-    status: UserStatusType, // skill status
+    status: UserStatusEnum, // skill status
     subjects: Type.Optional(Type.Array(ObjectIdSchema())), // subject ids under this skill
   },
   { $id: 'Skills', additionalProperties: false }
