@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '../store/store.ts'
 // import Home from '../views/home.view.vue'
+import Dashboard from '../views/dashboard.view.vue'
 import NotFound from '../views/not-found.view.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -12,6 +13,15 @@ const routes: Array<RouteRecordRaw> = [
     },
     component: () =>
       import(/* webpackChunkName: "login" */ '../views/login.view.vue'),
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    meta: {
+      requiresAuth: false,
+    },
+    component: () =>
+      import(/* webpackChunkName: "login" */ '../views/dashboard.view.vue'),
   },
   // {
   //   path: '/',
