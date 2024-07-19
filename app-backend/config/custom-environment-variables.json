@@ -8,5 +8,8 @@
   },
   "authentication": {
     "secret": "FEATHERS_SECRET"
+  },
+  "openai": {
+    "apikey": "BACKEND_OPENAI_API_KEY"
   }
 }

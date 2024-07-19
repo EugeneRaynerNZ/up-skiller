@@ -64,4 +64,7 @@ app.hooks({
   teardown: [],
 })
 
+console.log("OpenAI API key:", app.get('openai'))
+console.log("MongoDB URI:", app.get('mongodb'))
+
 export { app }

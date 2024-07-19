@@ -56,3 +56,4 @@ Thumbs.db
 
 #db
 app-docker/database
+app-docker/.env.local

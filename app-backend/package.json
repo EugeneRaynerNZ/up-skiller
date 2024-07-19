@@ -30,7 +30,7 @@
   },
   "main": "lib/index",
   "scripts": {
-    "dev": "dotenv -e ../app-docker/.env -- nodemon -x ts-node src/index.ts",
+    "dev": "dotenv -e ../app-docker/.env.local -- nodemon -x ts-node src/index.ts",
     "compile": "dotenv -e ../app-docker/.env -- shx rm -rf lib/ && tsc",
     "start": "dotenv -e ../app-docker/.env -- node lib/",
     "prettier": "npx prettier \"**/*.ts\" --write",
