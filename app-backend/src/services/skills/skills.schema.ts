@@ -1,18 +1,23 @@
 // // For more information about this file see https://dove.feathersjs.com/guides/cli/service.schemas.html
 import { resolve } from '@feathersjs/schema'
-import { Type, getValidator, querySyntax } from '@feathersjs/typebox'
-import { ObjectIdSchema } from '@feathersjs/typebox'
-import type { Static } from '@feathersjs/typebox'
-
-import type { HookContext } from '../../declarations'
+import { Type, getValidator, querySyntax, ObjectIdSchema } from '@feathersjs/typebox'
 import { dataValidator, queryValidator } from '../../validators'
+import { UserStatusType } from '../enum'
+
+import type { Static } from '@feathersjs/typebox'
+import type { HookContext } from '../../declarations'
 import type { SkillsService } from './skills.class'
 
 // Main data model schema
 export const skillsSchema = Type.Object(
   {
-    _id: ObjectIdSchema(),
-    text: Type.String()
+    _id: ObjectIdSchema(),  // skill id
+    userId: ObjectIdSchema(), // user id
+    name: Type.String(),  // skill name
+    description: Type.String(), // skill description
+    tags: Type.Optional(Type.Array(Type.String())),  // skill tags
+    status: UserStatusType, // skill status
+    subjects: Type.Optional(Type.Array(ObjectIdSchema())), // subject ids under this skill
   },
   { $id: 'Skills', additionalProperties: false }
 )
@@ -23,7 +28,9 @@ export const skillsResolver = resolve<Skills, HookContext<SkillsService>>({})
 export const skillsExternalResolver = resolve<Skills, HookContext<SkillsService>>({})
 
 // Schema for creating new entries
-export const skillsDataSchema = Type.Pick(skillsSchema, ['text'], {
+export const skillsDataSchema = Type.Pick(skillsSchema, 
+  ['userId', 'name', 'description', 'status'],
+{
   $id: 'SkillsData'
 })
 export type SkillsData = Static<typeof skillsDataSchema>
@@ -39,7 +46,10 @@ export const skillsPatchValidator = getValidator(skillsPatchSchema, dataValidato
 export const skillsPatchResolver = resolve<Skills, HookContext<SkillsService>>({})
 
 // Schema for allowed query properties
-export const skillsQueryProperties = Type.Pick(skillsSchema, ['_id', 'text'])
+export const skillsQueryProperties = Type.Pick(
+  skillsSchema, 
+  ['_id', 'userId', 'name'],
+)
 export const skillsQuerySchema = Type.Intersect(
   [
     querySyntax(skillsQueryProperties),

@@ -75,7 +75,7 @@ export const usersQueryProperties = Type.Pick(usersSchema, [
   '_id',
   'email',
   'username',
-  'role',
+  'phone'
 ])
 export const usersQuerySchema = Type.Intersect(
   [
