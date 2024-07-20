@@ -35,7 +35,7 @@ export const usersSchema = Type.Object(
       ),
     ),
   },
-  { $id: 'Users', timestamps: true, additionalProperties: true },
+  { $id: 'Users', additionalProperties: true },
 )
 export type Users = Static<typeof usersSchema>
 export const usersValidator = getValidator(usersSchema, dataValidator)

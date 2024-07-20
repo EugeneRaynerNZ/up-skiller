@@ -25,7 +25,7 @@ export const tasksSchema = Type.Object(
     priority: Type.Optional(Type.Number()), // Task priority: 1-3
     completedAt: Type.Optional(Type.Date()),
   },
-  { $id: 'Tasks', timestamps: true, additionalProperties: false },
+  { $id: 'Tasks', additionalProperties: false },
 )
 export type Tasks = Static<typeof tasksSchema>
 export const tasksValidator = getValidator(tasksSchema, dataValidator)
