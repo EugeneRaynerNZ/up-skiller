@@ -7,10 +7,10 @@ import { user } from './users/users'
 import type { Application } from '../declarations'
 
 export const services = (app: Application) => {
-  app.configure(tasks)
   // All services will be registered here
   app.configure(user)
   app.configure(skills)
   app.configure(subjects)
   app.configure(topics)
+  app.configure(tasks)
 }

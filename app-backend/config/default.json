@@ -39,5 +39,9 @@
         "secret": "<Client secret>"
       }
     }
+  },
+  "mongodb":{
+    "dbName": "upskiller"
   }
+
 }

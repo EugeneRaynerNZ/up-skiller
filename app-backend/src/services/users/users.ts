@@ -1,8 +1,21 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/service.html
 import { authenticate } from '@feathersjs/authentication'
-
-import type { Application } from '../../declarations'
 import { UserService, getOptions } from './users.class'
+import type { Application } from '../../declarations'
+import { checkEmailExists } from '../../hooks/check-email-exists'
+import { hooks as schemaHooks } from '@feathersjs/schema'
+
+import {
+  usersValidator,
+  usersDataValidator,
+  usersPatchValidator,
+  usersQueryValidator,
+  usersResolver,
+  usersExternalResolver,
+  usersDataResolver,
+  usersPatchResolver,
+  usersQueryResolver,
+} from './users.schema'
 
 export const userPath = 'users'
 export const userMethods: Array<keyof UserService> = [
@@ -28,19 +41,19 @@ export const user = (app: Application) => {
   app.service(userPath).hooks({
     around: {
       all: [],
-      create: [],
     },
     before: {
       all: [],
       find: [authenticate('jwt')],
       get: [authenticate('jwt')],
-      create: [],
+      create: [checkEmailExists, schemaHooks.validateData(usersDataValidator), schemaHooks.resolveData(usersDataResolver)],
       update: [authenticate('jwt')],
       patch: [authenticate('jwt')],
-      remove: [authenticate('jwt')],
+      // remove: [authenticate('jwt')],
     },
     after: {
       all: [],
+      create: []
     },
     error: {
       all: [],

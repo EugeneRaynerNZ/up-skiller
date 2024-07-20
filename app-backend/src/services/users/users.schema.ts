@@ -8,6 +8,8 @@ import { resolve } from '@feathersjs/schema'
 import { passwordHash } from '@feathersjs/authentication-local'
 import { dataValidator, queryValidator } from '../../validators'
 
+import {UserTypeEnum, UserStatusEnum} from '../enum'
+
 import type { HookContext } from '../../declarations'
 import type { UserService } from './users.class'
 import type { Static } from '@feathersjs/typebox'
@@ -23,7 +25,8 @@ export const usersSchema = Type.Object(
     lastname: Type.Optional(Type.String()),
     middlename: Type.Optional(Type.String()),
     phone: Type.Optional(Type.String()),
-    role: Type.String(),
+    role: UserTypeEnum,
+    status: UserStatusEnum,
     skills: Type.Array(ObjectIdSchema()),
     authProviders: Type.Optional(
       Type.Array(
@@ -34,6 +37,8 @@ export const usersSchema = Type.Object(
         }),
       ),
     ),
+    createdAt: Type.Optional(Type.String({ format: 'date-time' })),
+    updatedAt: Type.Optional(Type.String({ format: 'date-time' })),
   },
   { $id: 'Users', additionalProperties: true },
 )
@@ -48,7 +53,7 @@ export const usersExternalResolver = resolve<Users, HookContext<UserService>>({
 // Schema for creating new entries
 export const usersDataSchema = Type.Pick(
   usersSchema,
-  ['email', 'password', 'username', 'role'],
+  ['email', 'password', 'username'],
   {
     $id: 'UsersData',
   },
@@ -58,6 +63,10 @@ export const usersDataValidator = getValidator(usersDataSchema, dataValidator)
 export const usersDataResolver = resolve<Users, HookContext<UserService>>({
   // hash password
   password: passwordHash({ strategy: 'local' }),
+  // give user role a default value
+  role: () => UserTypeEnum.USER,
+  // give user status a default value
+  status: () => UserStatusEnum.PENDING,
 })
 
 // Schema for updating existing entries

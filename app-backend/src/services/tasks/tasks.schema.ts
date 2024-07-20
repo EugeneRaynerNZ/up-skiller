@@ -1,17 +1,17 @@
 // // For more information about this file see https://dove.feathersjs.com/guides/cli/service.schemas.html
-import { resolve } from '@feathersjs/schema'
 import {
   Type,
   getValidator,
   querySyntax,
   ObjectIdSchema,
 } from '@feathersjs/typebox'
+import { resolve } from '@feathersjs/schema'
 import { dataValidator, queryValidator } from '../../validators'
 import { SkillStatusEnum } from '../enum'
 
-import type { Static } from '@feathersjs/typebox'
 import type { HookContext } from '../../declarations'
 import type { TasksService } from './tasks.class'
+import type { Static } from '@feathersjs/typebox'
 
 // Main data model schema
 export const tasksSchema = Type.Object(
@@ -23,14 +23,17 @@ export const tasksSchema = Type.Object(
     tags: Type.Optional(Type.Array(Type.String())),
     status: SkillStatusEnum,
     priority: Type.Optional(Type.Number()), // Task priority: 1-3
-    completedAt: Type.Optional(Type.Date()),
+    /**
+     * Question: What is the difference between `dueDate` and `completedAt`?
+     * Error: strict mode: unknown keyword: "instanceOf"
+     */
+    completedAt: Type.Optional(Type.String()), // Task completion date
   },
   { $id: 'Tasks', additionalProperties: false },
 )
 export type Tasks = Static<typeof tasksSchema>
 export const tasksValidator = getValidator(tasksSchema, dataValidator)
 export const tasksResolver = resolve<Tasks, HookContext<TasksService>>({})
-
 export const tasksExternalResolver = resolve<Tasks, HookContext<TasksService>>(
   {},
 )
