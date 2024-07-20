@@ -1,3 +1,5 @@
+import { tasks } from './tasks/tasks'
+import { topics } from './topics/topics'
 import { subjects } from './subjects/subjects'
 import { skills } from './skills/skills'
 import { user } from './users/users'
@@ -5,8 +7,10 @@ import { user } from './users/users'
 import type { Application } from '../declarations'
 
 export const services = (app: Application) => {
-  app.configure(subjects)
-  app.configure(skills)
-  app.configure(user)
+  app.configure(tasks)
   // All services will be registered here
+  app.configure(user)
+  app.configure(skills)
+  app.configure(subjects)
+  app.configure(topics)
 }
