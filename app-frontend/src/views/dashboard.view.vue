@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <nav>
-            
-        </nav>
-    </div>
+
+    <Navigation></Navigation>
+    
     <section class="dashboard">
 
         <div class="dashboard-header">
@@ -20,9 +18,6 @@
 
         <div class="divider divider-horizontal"></div>
 
-        
-
-       
         <div class="dashboard-main">
 
             <div class="dashboard-content">
@@ -252,11 +247,13 @@
 </template>
 
 <script>
+import Navigation from '../components/Navigation.vue'
 import SvgIcon from '../components/SvgIcon.vue';
 
 export default {
   name: 'DashboardView',
   components: {
+    Navigation,
     SvgIcon
   }
 }
@@ -274,6 +271,10 @@ export default {
         margin: 0;
     }
 
+    a, button {
+        cursor: pointer;
+    }
+
     .divider {
         background: rgba(235, 235, 235, 1);
     }
@@ -289,11 +290,18 @@ export default {
         width: 1px;
     }
 
+    .dashboard {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: #FCFCFC;
+        margin-left: var(--sidebar-width);
+    }
+
     .tabs {
         display: flex;
         margin: 0;
         gap: 16px;
-        padding: 0;
     }
 
     .tab {
@@ -301,7 +309,8 @@ export default {
        align-items: center;
        font-size: 16px;
        position: relative;
-       gap: 8px;
+       gap: 4px;
+       cursor: pointer;
     }
 
     .tab img {
@@ -311,6 +320,7 @@ export default {
 
     .tab--active {
         color: #0043C5;
+        cursor: default;
     }
 
     .tab--active svg path {
@@ -344,15 +354,8 @@ export default {
         max-width: 270px;
     }
 
-    main > section {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        background: #FCFCFC;
-    }
-
     .learning-journeys {
-        padding: 16px 32px;
+        padding: 4px 32px;
     }
 
     .dashboard h1 {
@@ -442,10 +445,6 @@ export default {
         fill: rgba(0, 50, 227, 1)
     }
 
-    .learning-title {
-
-    }
-
     .learning-title h4 {
         color: #1C1B1F;
         font-size: 16px;
@@ -483,6 +482,8 @@ export default {
         align-items: center;
         border-radius: 8px;
         background: #0032E3;
+        border: none;
+        padding: 4px 4px 4px 8px;
     }
 
     .learning-button button span {
@@ -670,7 +671,7 @@ export default {
         max-width: 330px;
     }
 
-    .leader-header h3 {
+    .learn-header h3 {
         color: #000;
         font-size: 16px;
         font-style: normal;
