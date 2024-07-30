@@ -46,14 +46,18 @@ export const user = (app: Application) => {
       all: [],
       find: [authenticate('jwt')],
       get: [authenticate('jwt')],
-      create: [checkEmailExists, schemaHooks.validateData(usersDataValidator), schemaHooks.resolveData(usersDataResolver)],
+      create: [
+        checkEmailExists,
+        schemaHooks.validateData(usersDataValidator),
+        schemaHooks.resolveData(usersDataResolver),
+      ],
       update: [authenticate('jwt')],
       patch: [authenticate('jwt')],
       // remove: [authenticate('jwt')],
     },
     after: {
       all: [],
-      create: []
+      create: [],
     },
     error: {
       all: [],
